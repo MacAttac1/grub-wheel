@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grub Wheel</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Grub <i class="fa-solid fa-circle-notch"></i> Wheel</h1>
+    </header>
+
+    <div class="sub-header">
+      <h2>Mineraler</h2>
+      <button class="btn btn-add btn-toggle-add-mineral">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+    </div>
+
+    <div class="create-new-mineral hidden">
+      <form action="">
+        <input type="text" name="inpName" id="inpName" placeholder="Name" />
+        <input type="text" name="inpUnit" id="inpUnit" placeholder="Unit" />
+        <input
+          type="submit"
+          value="Create"
+          name="btnCreateNew"
+          id="btnCreateNew"
+        />
+      </form>
+    </div>
+
+    <div class="minerals">
+      <!-- insert mineral list here -->
+    </div>
+
+    <div class="sub-header">
+      <h2>Ingredients</h2>
+      <button class="btn btn-add btn-add-ingredient">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+    </div>
+
+    <div class="ingredients">
+      <!-- insert ingredient list here -->
+    </div>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <div class="modal-content">
+        <p>Insert HTML here...</p>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <!-- JS Link -->
+    <script src="./script.js"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/38b495a273.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

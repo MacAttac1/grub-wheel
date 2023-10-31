@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #222;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+header h1 {
+  font-size: 2.4em;
+}
+
+.create-new-mineral {
+  width: 80%;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input {
+  padding-left: 15px;
+  padding-block: 10px;
+  font-size: 1.5rem;
+}
+
+#inpEditInfo {
+  font-size: 1rem;
+  min-height: fit-content;
+  overflow-y: scroll;
+  padding: 15px;
+}
+
+.sub-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.minerals,
+.ingredients {
+  display: flex;
+  flex-direction: column;
+}
+
+.mineral,
+.ingredient {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  border-top: 2px solid grey;
+}
+
+.mineral:last-child,
+.ingredient:last-child {
+  border-bottom: 2px solid grey;
+}
+
+.mineral::-webkit-scrollbar,
+.ingredient::-webkit-scrollbar {
+  display: none;
+}
+
+.mineral-main,
+.ingredient-main {
+  min-width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mineral-main p,
+.ingredient-main p {
+  font-size: xx-large;
+  padding-block: 10px;
+}
+
+.mineral-title,
+.ingredient-title {
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+}
+
+.mineral-title span,
+.ingredient-title span {
+  font-size: 1.2rem;
+}
+
+.text-muted {
+  color: #666;
+}
+
+.mineral-side-right,
+.ingredient-side-right {
+  display: flex;
+}
+
+.btn {
+  border: none;
+  font-size: x-large;
+  padding-inline: 20px;
+  margin-right: 2px;
+}
+
+.btn-add {
+  background: #222;
+  color: green;
+  font-size: x-large;
+}
+
+[class^='btn btn-delete'] {
+  background-color: red;
+  color: white;
+  height: 100%;
+}
+
+.btn-edit-mineral,
+.btn-edit-ingredient {
+  background-color: orange;
+  color: white;
+}
+
+.btn-info {
+  background-color: #222;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+.modal {
+  position: absolute;
+  /* top: 0;
+  left: 10%; */
+  /* transform: translate(-50%, -50%); */
+  top: 50px;
+  left: 10px;
+  margin-inline: auto;
+  width: 95%;
+  height: 70%;
+  background-color: white;
+  color: #222;
+  padding: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.close-modal {
+  position: absolute;
+  top: 0rem;
+  right: 0.9rem;
+  height: fit-content;
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.modal-content h1 {
+  padding-bottom: 15px;
+}

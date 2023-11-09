@@ -34,7 +34,7 @@ const nutr = getData('./nutrients.json');
 const btnCreateNew = document.getElementById('btnCreateNew');
 const btnToggleAdd = document.querySelector('.btn-toggle-add-mineral');
 const btnAddIngredient = document.querySelector('.btn-add-ingredient');
-const closeModalBtn = document.querySelector('.close-modal');
+const closeModalBtn = document.querySelector('.btn-close-modal');
 
 // INPUTS
 const inputName = document.getElementById('inpName');
@@ -80,86 +80,103 @@ let ingredients = [
   {
     name: 'Paprika, grön',
     category: 'fruitAndVeg',
+    image: './images/paprika-green.jpg',
     addedToListDates: [],
   },
   {
     name: 'Banan',
     category: 'fruitAndVeg',
+    image: './images/banana.jpg',
     addedToListDates: [],
   },
   {
     name: 'Paprika, röd',
     category: 'fruitAndVeg',
+    image: './images/paprika-red.jpg',
     addedToListDates: [],
   },
   {
     name: 'Mjölk',
     category: 'dairy',
+    image: './images/default-ingredient-image.png',
     addedToListDates: [],
   },
   {
     name: 'Yoghurt',
     category: 'dairy',
+    image: './images/default-ingredient-image.png',
     addedToListDates: [],
   },
   {
     name: 'Creme Fraiche',
     category: 'dairy',
+    image: './images/default-ingredient-image.png',
     addedToListDates: [],
   },
   {
     name: 'Bröd',
     category: 'skafferi',
+    image: './images/default-ingredient-image.png',
     addedToListDates: [],
   },
   {
     name: 'Gurka',
     category: 'fruitAndVeg',
+    image: './images/cucumber.jpg',
     addedToListDates: [],
   },
   {
     name: 'Morötter',
     category: 'fruitAndVeg',
+    image: './images/carrot.jpg',
     addedToListDates: [],
   },
   {
     name: 'Clementin',
     category: 'fruitAndVeg',
+    image: './images/clementine.jpg',
     addedToListDates: [],
   },
   {
     name: 'Äpple',
     category: 'fruitAndVeg',
+    image: './images/apple.jpg',
     addedToListDates: [],
   },
   {
     name: 'Vitkål',
     category: 'fruitAndVeg',
+    image: './images/vitkal.jpg',
     addedToListDates: [],
   },
   {
     name: 'Grape',
     category: 'fruitAndVeg',
+    image: './images/grape.jpg',
     addedToListDates: [],
   },
   {
     name: 'Päron',
     category: 'fruitAndVeg',
+    image: './images/pear.jpg',
     addedToListDates: [],
   },
   {
     name: 'Ananas',
     category: 'fruitAndVeg',
+    image: './images/pineapple.jpg',
     addedToListDates: [],
   },
   {
     name: 'Gul lök',
     category: 'fruitAndVeg',
+    image: './images/onion-yellow.jpg',
     addedToListDates: [],
   },
 ];
 
 let shoppingList = [];
+let filteredIngredientsByCategory = [];
 
 let ingredientCategories = ['fruitAndVeg', 'dairy', 'skafferi'];
 
@@ -552,12 +569,14 @@ const displayShoppingList = function () {
       <div class="shopping-list-item">
       <div class="shopping-list-item-main">
       <div class="checkbox">
-      <input
-              type="checkbox"
-              class="btn btn-check-shopping-list-item"
-              name="Check"
-              value="${item.ingredient.ID}" />
+        <input
+        type="checkbox"
+        class="btn btn-check-shopping-list-item"
+        name="Check"
+        value="${item.ingredient.ID}"
+        style ="background:url(${item.ingredient.image})" />
       </div>
+      <img src="${item.ingredient.image}" />
         <p class="shopping-list-item-title">${
           item.ingredient.name
         }<span class="text-muted"> ${
@@ -588,33 +607,33 @@ displayShoppingList();
 shoppingListDiv.addEventListener('click', function (e) {
   const clicked = e.target.closest('.btn');
 
-  let index;
+  let indexShoppingList;
   shoppingList.forEach((ing, i) => {
     if (ing.ingredient.ID === clicked.value) {
-      index = i;
+      indexShoppingList = i;
+    }
+  });
+
+  let indexIngredientsList;
+  ingredients.forEach(function (ing, i) {
+    if (ing.ID === clicked.value) {
+      indexIngredientsList = i;
     }
   });
 
   // Guard clause
   if (!clicked) return;
 
-  console.log(clicked.value);
+  console.log('Shopping List Index:', indexShoppingList);
+  console.log('Ingredient List Index:', indexIngredientsList);
 
-  // ADD (Modal) ingredient to shopping list
+  ///// ADD TO SHOPPING LIST (Modal) -------------------
+
   if (clicked.classList.contains(`btn-add-${clicked.value}`)) {
     // Extract clicked category from class list
     let category = clicked.classList.value.split('-');
     category = category[category.length - 1];
     let html = '';
-    // Modal heading
-    html += `
-    <h2>Top ${category}</h2>
-    `;
-
-    html += `
-    
-    <div class="add-ingredients-list top-ingredients">
-    `;
 
     // Create a new array of ingredients for clicked category
     let ingredientsByCategory = ingredients.filter(function (ing) {
@@ -632,57 +651,129 @@ shoppingListDiv.addEventListener('click', function (e) {
       })
       .sort((a, b) => a.name.localeCompare(b.name));
 
-    // Generate HTML for top ingredients
-    topIngredients.forEach(function (ing) {
-      html += `
-      <div class="ingredient-to-list" id="${ing.ID}" >${ing.name} (${ing.addedToListDates.length})</div>
-      `;
-    });
-
-    // Generate new heading and div for all ingredients in category
-    html += `
-    <h2>All ${category}</h2>
-    <div class="add-ingredients-list all-ingredients">
-    `;
-
     // Sort all ingredients in category by name
     ingredientsByCategory = ingredientsByCategory.sort((a, b) =>
       a.name.localeCompare(b.name)
     );
 
-    // Generate HTML for all ingredients
-    ingredientsByCategory.forEach(function (ing) {
-      html += `
-      <div class="ingredient-to-list" id="${ing.ID}" >${ing.name} (${ing.addedToListDates.length})</div>
-      `;
-    });
+    // Heading and div for top ingredients
+    html += `
+    <h2>Mest köpta</h2>
+    <div class="add-ingredients-list">
+      <div class="top-ingredients">
+    `;
+
+    // Closing div for top ingredients
+    html += `
+   </div>
+    `;
+
+    // Heading for all ingredients in category
+    html += `
+    
+    <h2>Alla ${category}</h2>
+    `;
+
+    // Input filter for all ingredient
+    html += `
+    <form action="">
+    <div class="add-ingredient-filter">
+        <input type="text" id="filter-add-to-shopping-list" placeholder="Sök..." />
+        <button id="btnClearFilter"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </form>
+    `;
+
+    // Div for all ingredients in category
+    html += `
+    <div class="all-ingredients">
+    `;
 
     // Add closing div to entire modal HTML
-    html += '</div>';
+    html += `
+    </div>
+    </div>
+    `;
 
     // Render the modal with all HTML
     toggleModal(html);
 
+    const topIngredientsDiv = document.querySelector('.top-ingredients');
+    const allIngredientsDiv = document.querySelector('.all-ingredients');
+
+    displayIngredientsToAdd(topIngredients, topIngredientsDiv);
+    displayIngredientsToAdd(ingredientsByCategory, allIngredientsDiv);
+
+    // Add clicked ingredient to hopping list
     const addIngredientsList = document.querySelector('.add-ingredients-list');
     addIngredientsList.addEventListener('click', function (e) {
       const clicked = e.target.closest('.ingredient-to-list');
+
+      // Guard clause
+      if (!clicked) return;
 
       let clickedIngredient = ingredients.filter(ing => ing.ID === clicked.id);
 
       const newShoppingListItem = new ShoppingListItem(...clickedIngredient);
       shoppingList.push(newShoppingListItem);
 
-      clicked.classList.add('text-muted');
+      clicked.classList.add('text-added');
 
       displayShoppingList();
+    });
+
+    // Filter input logic
+    const inpFilterAllIngredients = document.getElementById(
+      'filter-add-to-shopping-list'
+    );
+    inpFilterAllIngredients.addEventListener('keyup', function (e) {
+      e.preventDefault();
+      console.log(e.target.value.length);
+      filteredIngredientsByCategory = ingredientsByCategory.filter(function (
+        el,
+        i
+      ) {
+        if (
+          el.name.slice(0, e.target.value.length).toLocaleLowerCase() ===
+          e.target.value.toLocaleLowerCase()
+        )
+          return el;
+      });
+      if (e.target.value === '') {
+        displayIngredientsToAdd(
+          ingredientsByCategory,
+          document.querySelector('.all-ingredients')
+        );
+      } else {
+        displayIngredientsToAdd(
+          filteredIngredientsByCategory,
+          document.querySelector('.all-ingredients')
+        );
+      }
+    });
+
+    const btnClearFilter = document.getElementById('btnClearFilter');
+    btnClearFilter.addEventListener('click', function (e) {
+      e.preventDefault();
+      inpFilterAllIngredients.value = '';
+      displayIngredientsToAdd(
+        ingredientsByCategory,
+        document.querySelector('.all-ingredients')
+      );
     });
   }
 
   // CHECK (and clear) ingredient in shopping list
   if (clicked.classList.contains(`btn-check-shopping-list-item`)) {
-    console.log('check');
     setTimeout(function () {
-      shoppingList.splice(index, 1);
+      // Add date to checked ingredient object in ingredients list
+      ingredients[indexIngredientsList].addedToListDates.push(
+        new Date().toISOString()
+      );
+
+      // Removed checked ingredient from shopping list
+      shoppingList.splice(indexShoppingList, 1);
+
       displayShoppingList();
     }, 1000);
   }
@@ -690,12 +781,25 @@ shoppingListDiv.addEventListener('click', function (e) {
   // DELETE ingredient from shopping list
   if (clicked.classList.contains(`btn-delete-shopping-list-item`)) {
     console.log('delete');
-    shoppingList.splice(index, 1);
+    shoppingList.splice(indexShoppingList, 1);
     displayShoppingList();
   }
 });
 
 ///// GLOBAL FUNCTIONS
+
+const displayIngredientsToAdd = function (arr, targetElement) {
+  targetElement.innerHTML = '';
+  arr.forEach(function (ing) {
+    const html = `
+    <div class="ingredient-to-list" id="${ing.ID}" >
+    <img src="${ing.image}" />
+    <p>${ing.name}</p>
+    </div>
+    `;
+    targetElement.insertAdjacentHTML('beforeend', html);
+  });
+};
 
 // Remove all dates older than X days (setting variable) from a dates array on an object
 const removeOldDates = function (arr) {

@@ -1,22 +1,57 @@
 'use strict';
 
+////////////////////////////////////////////////
+
+// SETTING VARIABLES
+
+let oldDateThreshhold = 90;
+
+// JSON
+
+const getData = async function (url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};
+
+const nutr = getData('./nutrients.json');
+// console.log(nutr);
+
+// const setData = async function (url = '', data = {}) {
+//   const response = await fetch(url, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(data),
+//   });
+//   return response.json();
+// };
+
+// HTML ELEMENTS
+
+// BUTTONS
+const btnCreateNew = document.getElementById('btnCreateNew');
+const btnToggleAdd = document.querySelector('.btn-toggle-add-mineral');
+const btnAddIngredient = document.querySelector('.btn-add-ingredient');
+const closeModalBtn = document.querySelector('.close-modal');
+
+// INPUTS
+const inputName = document.getElementById('inpName');
+const inputUnit = document.getElementById('inpUnit');
+
+// DIVS
+const mineralsDiv = document.querySelector('.minerals');
+const ingredientsDiv = document.querySelector('.ingredients');
+const createNewMineralDiv = document.querySelector('.create-new-mineral');
+const modalContentDiv = document.querySelector('.modal-content');
+const shoppingListDiv = document.querySelector('.shopping-list');
+
 // MODAL
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
-const closeModalBtn = document.querySelector('.close-modal');
-const modalContentDiv = document.querySelector('.modal-content');
 
-////////////////////////////////////////////////
-
-const inputName = document.getElementById('inpName');
-const inputUnit = document.getElementById('inpUnit');
-const btnCreateNew = document.getElementById('btnCreateNew');
-const mineralsDiv = document.querySelector('.minerals');
-const ingredientsDiv = document.querySelector('.ingredients');
-const btnToggleAdd = document.querySelector('.btn-toggle-add-mineral');
-const btnAddIngredient = document.querySelector('.btn-add-ingredient');
-const createNewMineralDiv = document.querySelector('.create-new-mineral');
-let btnInfoMineral;
+let btnInfoMineral; // TODO: refaktorera bort dessa med samma metod som ingredienslistan
 let btnEditMineral;
 let btnDeleteMineral;
 
@@ -45,32 +80,86 @@ let ingredients = [
   {
     name: 'Paprika, grön',
     category: 'fruitAndVeg',
+    addedToListDates: [],
   },
   {
     name: 'Banan',
     category: 'fruitAndVeg',
+    addedToListDates: [],
   },
   {
     name: 'Paprika, röd',
     category: 'fruitAndVeg',
+    addedToListDates: [],
   },
   {
     name: 'Mjölk',
     category: 'dairy',
+    addedToListDates: [],
   },
   {
     name: 'Yoghurt',
     category: 'dairy',
+    addedToListDates: [],
   },
   {
     name: 'Creme Fraiche',
     category: 'dairy',
+    addedToListDates: [],
   },
   {
     name: 'Bröd',
     category: 'skafferi',
+    addedToListDates: [],
+  },
+  {
+    name: 'Gurka',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Morötter',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Clementin',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Äpple',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Vitkål',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Grape',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Päron',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Ananas',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
+  },
+  {
+    name: 'Gul lök',
+    category: 'fruitAndVeg',
+    addedToListDates: [],
   },
 ];
+
+let shoppingList = [];
 
 let ingredientCategories = ['fruitAndVeg', 'dairy', 'skafferi'];
 
@@ -91,6 +180,7 @@ class Ingredient {
     Math.floor(Math.random() * 1000) * Math.floor(Math.random() * 1000)
   ).padStart(6, '0');
   category = '';
+  addedToListDates = [];
 
   constructor(name, category) {
     this.name = name;
@@ -98,8 +188,17 @@ class Ingredient {
   }
 }
 
+class ShoppingListItem {
+  amount = 10;
+  amountUnit = 'st';
+
+  constructor(ingredient) {
+    this.ingredient = ingredient;
+  }
+}
+
 // Create new mineral
-btnCreateNew.addEventListener('click', function (event) {
+btnCreateNew?.addEventListener('click', function (event) {
   event.preventDefault();
 
   const mineral = new Mineral(inputName.value, inputUnit.value);
@@ -306,16 +405,16 @@ const toggleModal = function (html) {
   overlay.classList.toggle('hidden');
 };
 
-closeModalBtn.addEventListener('click', toggleModal);
+closeModalBtn?.addEventListener('click', toggleModal);
 
-overlay.addEventListener('click', toggleModal);
+overlay?.addEventListener('click', toggleModal);
 
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape' && !modal.classList.contains('hidden'))
     toggleModal();
 });
 
-btnToggleAdd.addEventListener('click', () =>
+btnToggleAdd?.addEventListener('click', () =>
   createNewMineralDiv.classList.toggle('hidden')
 );
 
@@ -325,7 +424,7 @@ ingredientCategories.forEach(function (cat) {
   <option>${cat}</option>
   `;
 });
-btnAddIngredient.addEventListener('click', function () {
+btnAddIngredient?.addEventListener('click', function () {
   const addIngredientHTML = `
   <h1>Add Ingredient</h1>
   <form action="">
@@ -367,7 +466,7 @@ btnAddIngredient.addEventListener('click', function () {
   });
 });
 
-ingredientsDiv.addEventListener('click', function (e) {
+ingredientsDiv?.addEventListener('click', function (e) {
   const clicked = e.target.closest('.btn');
 
   // Guard clause
@@ -428,8 +527,199 @@ ingredientsDiv.addEventListener('click', function (e) {
   }
 });
 
-// TEMPORARY ID GENERATOR
+// SHOPPING LIST
 
+// DISPLAY SHOPPING LIST
+const displayShoppingList = function () {
+  shoppingListDiv.innerHTML = '';
+
+  ingredientCategories.forEach(function (cat) {
+    let categoryHTML = `
+    <div class="shopping-list-${cat}">
+      <div class="shopping-list-category-header">  
+        <h2>${cat}</h2>
+        <button class="btn btn-add-${cat}" value="${cat}"><i class="fa-solid fa-circle-plus"></i></button>
+      </div>
+    
+    `;
+
+    const shoppingListCurrentCategory = shoppingList.filter(
+      item => item.ingredient.category === cat
+    );
+
+    shoppingListCurrentCategory.forEach(function (item) {
+      categoryHTML += `
+      <div class="shopping-list-item">
+      <div class="shopping-list-item-main">
+      <div class="checkbox">
+      <input
+              type="checkbox"
+              class="btn btn-check-shopping-list-item"
+              name="Check"
+              value="${item.ingredient.ID}" />
+      </div>
+        <p class="shopping-list-item-title">${
+          item.ingredient.name
+        }<span class="text-muted"> ${
+        item.amount > 0 ? '(' + item.amount + item.amountUnit + ')' : ''
+      }</span></p>
+        
+      </div>
+    <div class="shopping-list-item-side-right">
+      <button value="${
+        item.ingredient.ID
+      }" class="btn btn-edit-shopping-list-item"><i class="fa-solid fa-pencil"></i></button>
+      <button value="${
+        item.ingredient.ID
+      }" class="btn btn-delete-shopping-list-item"><i class="fa-regular fa-trash-can"></i></button>
+    </div>
+      </div>`;
+    });
+
+    categoryHTML += `</div>`;
+
+    shoppingListDiv.insertAdjacentHTML('beforeend', categoryHTML);
+  });
+};
+
+displayShoppingList();
+
+// SHOPPING LIST EVENTLISTENER DELEGATION
+shoppingListDiv.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.btn');
+
+  let index;
+  shoppingList.forEach((ing, i) => {
+    if (ing.ingredient.ID === clicked.value) {
+      index = i;
+    }
+  });
+
+  // Guard clause
+  if (!clicked) return;
+
+  console.log(clicked.value);
+
+  // ADD (Modal) ingredient to shopping list
+  if (clicked.classList.contains(`btn-add-${clicked.value}`)) {
+    // Extract clicked category from class list
+    let category = clicked.classList.value.split('-');
+    category = category[category.length - 1];
+    let html = '';
+    // Modal heading
+    html += `
+    <h2>Top ${category}</h2>
+    `;
+
+    html += `
+    
+    <div class="add-ingredients-list top-ingredients">
+    `;
+
+    // Create a new array of ingredients for clicked category
+    let ingredientsByCategory = ingredients.filter(function (ing) {
+      return ing.category === category;
+    });
+
+    // Copy the array above, sort by most dates, filter out top X, sort again by name
+    let topIngredients = ingredientsByCategory
+      .slice()
+      .sort((a, b) => b.addedToListDates.length - a.addedToListDates.length)
+      .filter((ing, i) => {
+        if (i < 5) {
+          return ing;
+        }
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    // Generate HTML for top ingredients
+    topIngredients.forEach(function (ing) {
+      html += `
+      <div class="ingredient-to-list" id="${ing.ID}" >${ing.name} (${ing.addedToListDates.length})</div>
+      `;
+    });
+
+    // Generate new heading and div for all ingredients in category
+    html += `
+    <h2>All ${category}</h2>
+    <div class="add-ingredients-list all-ingredients">
+    `;
+
+    // Sort all ingredients in category by name
+    ingredientsByCategory = ingredientsByCategory.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+
+    // Generate HTML for all ingredients
+    ingredientsByCategory.forEach(function (ing) {
+      html += `
+      <div class="ingredient-to-list" id="${ing.ID}" >${ing.name} (${ing.addedToListDates.length})</div>
+      `;
+    });
+
+    // Add closing div to entire modal HTML
+    html += '</div>';
+
+    // Render the modal with all HTML
+    toggleModal(html);
+
+    const addIngredientsList = document.querySelector('.add-ingredients-list');
+    addIngredientsList.addEventListener('click', function (e) {
+      const clicked = e.target.closest('.ingredient-to-list');
+
+      let clickedIngredient = ingredients.filter(ing => ing.ID === clicked.id);
+
+      const newShoppingListItem = new ShoppingListItem(...clickedIngredient);
+      shoppingList.push(newShoppingListItem);
+
+      clicked.classList.add('text-muted');
+
+      displayShoppingList();
+    });
+  }
+
+  // CHECK (and clear) ingredient in shopping list
+  if (clicked.classList.contains(`btn-check-shopping-list-item`)) {
+    console.log('check');
+    setTimeout(function () {
+      shoppingList.splice(index, 1);
+      displayShoppingList();
+    }, 1000);
+  }
+
+  // DELETE ingredient from shopping list
+  if (clicked.classList.contains(`btn-delete-shopping-list-item`)) {
+    console.log('delete');
+    shoppingList.splice(index, 1);
+    displayShoppingList();
+  }
+});
+
+///// GLOBAL FUNCTIONS
+
+// Remove all dates older than X days (setting variable) from a dates array on an object
+const removeOldDates = function (arr) {
+  // Must be array of objects
+
+  // Loop over the array of objects
+  arr.forEach(function (obj) {
+    // Filter out dates older than global setting
+    obj.addedToListDates = obj.addedToListDates.filter(function (date) {
+      const currentDate = new Date().getTime();
+      const daysSinceDate = Math.round(
+        (currentDate - new Date(date).getTime()) / (24 * 60 * 60 * 1000)
+      );
+      if (daysSinceDate < oldDateThreshhold) {
+        return date;
+      }
+    });
+  });
+  return arr;
+};
+
+// TEMPORARY FUNCTIONS ////////////////////////////////////////
+
+// Ingredient ID:s
 const generateIngredientID = function () {
   ingredients.map(function (ing, i) {
     ing.ID = String(
@@ -440,7 +730,41 @@ const generateIngredientID = function () {
 
 generateIngredientID();
 
+// Ingredient added to list dates
+function getRandomDateWithinLastSixMonths() {
+  const currentDate = new Date();
+  const sixMonthsAgo = new Date();
+  sixMonthsAgo.setMonth(currentDate.getMonth() - 12);
+
+  const randomTime =
+    Math.random() * (currentDate.getTime() - sixMonthsAgo.getTime()) +
+    sixMonthsAgo.getTime();
+  const randomDate = new Date(randomTime);
+
+  return randomDate;
+}
+
+const generateNumberOfRandomDates = function () {
+  ingredients.forEach(function (ing) {
+    const dateArray = [];
+    for (let index = 0; index < Math.floor(Math.random() * 20 + 5); index++) {
+      const date = getRandomDateWithinLastSixMonths();
+      dateArray.push(date.toISOString());
+    }
+    ing.addedToListDates = dateArray;
+  });
+};
+
+generateNumberOfRandomDates();
+
 //////////////////////////
 
-displayMinerals();
-displayIngredients();
+// displayMinerals();
+// displayIngredients();
+
+// ingredients = ingredients.sort(
+//   (a, b) => b.addedToListDates.length - a.addedToListDates.length
+// );
+
+console.log(ingredients);
+// removeOldDates(ingredients);

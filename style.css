@@ -57,13 +57,15 @@ input {
 }
 
 .minerals,
-.ingredients {
+.ingredients,
+.shopping-list-items {
   display: flex;
   flex-direction: column;
 }
 
 .mineral,
-.ingredient {
+.ingredient,
+.shopping-list-item {
   display: flex;
   flex-wrap: nowrap;
   overflow: scroll;
@@ -76,25 +78,30 @@ input {
 }
 
 .mineral::-webkit-scrollbar,
-.ingredient::-webkit-scrollbar {
+.ingredient::-webkit-scrollbar,
+.shopping-list-item::-webkit-scrollbar {
   display: none;
 }
 
 .mineral-main,
-.ingredient-main {
+.ingredient-main,
+.shopping-list-item-main {
   min-width: 100vw;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .mineral-main p,
-.ingredient-main p {
+.ingredient-main p,
+.shopping-list-item-main p {
   font-size: xx-large;
   padding-block: 10px;
 }
 
 .mineral-title,
-.ingredient-title {
+.ingredient-title,
+.shopping-list-item-title {
   padding-right: 15px;
   padding-left: 15px;
   width: 100%;
@@ -110,7 +117,8 @@ input {
 }
 
 .mineral-side-right,
-.ingredient-side-right {
+.ingredient-side-right,
+.shopping-list-item-side-right {
   display: flex;
 }
 
@@ -121,7 +129,7 @@ input {
   margin-right: 2px;
 }
 
-.btn-add {
+[class^='btn btn-add'] {
   background: #222;
   color: green;
   font-size: x-large;
@@ -144,6 +152,11 @@ input {
   color: white;
 }
 
+.ingredient-to-list {
+  padding-block: 10px;
+  border-bottom: 1px solid black;
+}
+
 .hidden {
   display: none;
 }
@@ -164,7 +177,7 @@ input {
   /* top: 0;
   left: 10%; */
   /* transform: translate(-50%, -50%); */
-  top: 50px;
+  top: 25px;
   left: 10px;
   margin-inline: auto;
   width: 95%;
@@ -175,6 +188,7 @@ input {
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.7);
   z-index: 10;
+  overflow-y: scroll;
 }
 
 .close-modal {
@@ -191,4 +205,33 @@ input {
 
 .modal-content h1 {
   padding-bottom: 15px;
+}
+
+.shopping-list-category-header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-block: 10px;
+}
+
+.shopping-list-item-main p {
+  font-size: 1.5rem;
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+input:checked {
+  background-color: green;
+}
+
+.checkbox {
+  padding-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

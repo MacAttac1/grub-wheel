@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Kalcium",
+    "unit": "mg",
+    "info": "Dairy products, eggs, canned fish with bones (salmon, sardines), green leafy vegetables, nuts, seeds, tofu, thyme, oregano, dill, cinnamon.",
+    "category": "mineral"
+  },
+  {
+    "name": "Zinc",
+    "unit": "mg",
+    "info": "Oysters*, red meat, poultry, nuts, whole grains, dairy products",
+    "category": "mineral"
+  },
+  {
+    "name": "Iron",
+    "unit": "mg",
+    "info": "Meat, seafood, nuts, beans, dark chocolate",
+    "category": "mineral"
+  }
+]

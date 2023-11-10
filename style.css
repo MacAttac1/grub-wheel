@@ -171,7 +171,7 @@ input {
 [class^='btn btn-add'] {
   background: #222;
   color: green;
-  font-size: x-large;
+  font-size: 2rem;
 }
 
 [class^='btn btn-add']:hover {
@@ -264,7 +264,7 @@ input[type='checkbox'] {
 }
 
 .checkbox {
-  padding-left: 15px;
+  padding-left: 7px;
   display: flex;
   justify-content: center;
   align-items: center;

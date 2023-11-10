@@ -185,8 +185,7 @@ input {
   height: 100%;
 }
 
-.btn-edit-mineral,
-.btn-edit-ingredient {
+[class^='btn btn-edit'] {
   background-color: orange;
   color: white;
 }

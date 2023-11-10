@@ -44,7 +44,7 @@ const displayShoppingList = function () {
     <div class="list-item-side-right">
       <button value="${
         item.ingredient.ID
-      }" class="btn btn-edit-shopping-list-item"><i class="fa-solid fa-pencil"></i></button>
+      }" class="btn btn-edit-list-item"><i class="fa-solid fa-pencil"></i></button>
       <button value="${
         item.ingredient.ID
       }" class="btn btn-delete-shopping-list-item"><i class="fa-regular fa-trash-can"></i></button>

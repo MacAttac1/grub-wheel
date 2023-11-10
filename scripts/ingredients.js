@@ -115,7 +115,7 @@ const displayIngredients = function () {
       <button value="${ingredient.ID}" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></button>
       </div>
       <div class="list-item-side-right">
-      <button value="${ingredient.ID}" class="btn btn-edit-ingredient"><i class="fa-solid fa-pencil"></i></button>
+      <button value="${ingredient.ID}" class="btn btn-edit-list-item"><i class="fa-solid fa-pencil"></i></button>
       <button value="${ingredient.ID}" class="btn btn-delete-ingredient"><i class="fa-regular fa-trash-can"></i></button>
       </div>
       </div>

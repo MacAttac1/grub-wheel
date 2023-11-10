@@ -37,8 +37,8 @@ const displayMinerals = function () {
           <button value="${i}" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></button>
         </div>
         <div class="list-item-side-right">
-          <button value="${i}" class="btn btn-edit-mineral"><i class="fa-solid fa-pencil"></i></button>
-          <button value="${i}" class="btn btn-delete-mineral"><i class="fa-regular fa-trash-can"></i></button>
+          <button value="${i}" class="btn btn-edit-list-item"><i class="fa-solid fa-pencil"></i></button>
+          <button value="${i}" class="btn btn-delete-nutrient"><i class="fa-regular fa-trash-can"></i></button>
         </div>
       </div>
     `;
@@ -49,7 +49,7 @@ const displayMinerals = function () {
   // Re-assign all buttons in mineral div
   btnInfoMineral = document.querySelectorAll('.btn-info');
   btnEditMineral = document.querySelectorAll('.btn-edit-mineral');
-  btnDeleteMineral = document.querySelectorAll('.btn-delete-mineral');
+  btnDeleteMineral = document.querySelectorAll('.btn-delete-nutrient');
 
   // Mineral Information (MODAL)
   btnInfoMineral.forEach(function (btn) {

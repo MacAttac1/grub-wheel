@@ -31,9 +31,9 @@ const displayMinerals = function () {
   // Generate one div + content for all minerals in array
   minerals.forEach(function (mineral, i) {
     const html = `
-      <div class="mineral">
-        <div class="mineral-main">
-          <p class="mineral-title">${mineral.name}<span class="text-muted"> (${mineral.unit})</span></p>
+      <div class="list-item">
+        <div class="list-item-main">
+          <p class="list-item-title">${mineral.name}<span class="text-muted"> (${mineral.unit})</span></p>
           <button value="${i}" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></button>
         </div>
         <div class="list-item-side-right">

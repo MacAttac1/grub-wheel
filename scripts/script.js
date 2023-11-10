@@ -232,11 +232,11 @@ const toggleModal = function (html) {
 
 btnMenu.addEventListener('click', function () {
   const menuHTML = `
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="shoppingList.html">Shopping List</a></li>
-    <li><a href="ingredients.html">Ingredients</a></li>
-    <li><a href="nutrients.html">Nutrients</a></li>
+  <ul id="modalMenu">
+    <li><a href="index.html">Hem</a></li>
+    <li><a href="shoppingList.html">Inköpslista</a></li>
+    <li><a href="ingredients.html">Ingredienser</a></li>
+    <li><a href="nutrients.html">Näringsämnen</a></li>
   </ul>
   `;
   toggleModal(menuHTML);

@@ -181,7 +181,7 @@ ingredientsDiv?.addEventListener('click', function (e) {
 
   // Delete ingredient
   if (clicked.classList.contains('btn-delete-ingredient')) {
-    if (confirm('Are you sure about this?')) {
+    if (confirm('Vill du verkligen ta bort?')) {
       ingredients.splice(index, 1);
     }
     displayIngredients();

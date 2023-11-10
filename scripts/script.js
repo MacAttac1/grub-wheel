@@ -211,7 +211,7 @@ class Ingredient {
 }
 
 class ShoppingListItem {
-  amount = 10;
+  amount = 3;
   amountUnit = 'st';
 
   constructor(ingredient) {

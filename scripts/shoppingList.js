@@ -16,6 +16,8 @@ const displayShoppingList = function () {
     
     `;
 
+    // <img src="${item.ingredient.image}" />
+
     const shoppingListCurrentCategory = shoppingList.filter(
       item => item.ingredient.category === cat.name
     );
@@ -32,7 +34,6 @@ const displayShoppingList = function () {
         value="${item.ingredient.ID}"
         style ="background:url(${item.ingredient.image})" />
       </div>
-      <img src="${item.ingredient.image}" />
         <p class="list-item-title">${
           item.ingredient.name
         }<span class="text-muted"> ${

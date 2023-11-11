@@ -199,7 +199,8 @@ input {
   display: none;
 }
 
-.add-new-ingredient-modal {
+.add-new-ingredient-modal,
+.edit-ingredient-modal {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -207,14 +208,16 @@ input {
   align-items: center;
 }
 
-.add-new-ingredient-modal form {
+.add-new-ingredient-modal form,
+.edit-ingredient-modal form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.add-new-ingredient-modal input {
+.add-new-ingredient-modal input,
+.edit-ingredient-modal input {
   margin-top: 15px;
   border: none;
   text-align: center;
@@ -222,7 +225,8 @@ input {
   border-radius: 10rem;
 }
 
-.add-new-ingredient-modal input[type='submit'] {
+.add-new-ingredient-modal input[type='submit'],
+.edit-ingredient-modal [type='submit'] {
   margin-top: 15px;
   border: none;
   text-align: center;
@@ -231,7 +235,8 @@ input {
   border-radius: 10rem;
 }
 
-.add-new-ingredient-modal select {
+.add-new-ingredient-modal select,
+.edit-ingredient-modal select {
   margin-top: 15px;
   font-size: x-large;
   border: none;

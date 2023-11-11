@@ -112,6 +112,7 @@ let ingredients = [
     category: 'dairy',
     image: './images/cremefraiche.jpg',
     addedToListDates: [],
+    units: ['st', 'dl', 'g'],
   },
   {
     name: 'Bröd',
@@ -175,7 +176,13 @@ let ingredients = [
   },
 ];
 
-let shoppingList = [];
+let shoppingList = [
+  {
+    ingredient: ingredients[5],
+    amount: 3,
+    amountUnit: 'st',
+  },
+];
 let filteredIngredientsByCategory = [];
 
 let ingredientCategories = [

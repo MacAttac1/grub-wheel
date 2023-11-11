@@ -115,7 +115,7 @@ const displayIngredients = function () {
       <button value="${ingredient.ID}" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></button>
       </div>
       <div class="list-item-side-right">
-      <button value="${ingredient.ID}" class="btn btn-edit-list-item"><i class="fa-solid fa-pencil"></i></button>
+      <button value="${ingredient.ID}" class="btn btn-edit-ingredient"><i class="fa-solid fa-pencil"></i></button>
       <button value="${ingredient.ID}" class="btn btn-delete-ingredient"><i class="fa-regular fa-trash-can"></i></button>
       </div>
       </div>
@@ -141,8 +141,8 @@ ingredientsDiv?.addEventListener('click', function (e) {
   // Edit ingredient
   if (clicked.classList.contains('btn-edit-ingredient')) {
     const html = `
-    <h2>Edit Ingredient</h2>
-    <div class="add-new-ingredient-modal">
+    <h2>Editera ingrediens</h2>
+    <div class="edit-ingredient-modal">
       <form action="">
       <input type="text" name="inpEditName" id="inpEditName" placeholder="Name" />
       <select

@@ -44,7 +44,7 @@ const displayShoppingList = function () {
     <div class="list-item-side-right">
       <button value="${
         item.ingredient.ID
-      }" class="btn btn-edit-list-item"><i class="fa-solid fa-pencil"></i></button>
+      }" class="btn btn-edit-shopping-list-item"><i class="fa-solid fa-pencil"></i></button>
       <button value="${
         item.ingredient.ID
       }" class="btn btn-delete-shopping-list-item"><i class="fa-regular fa-trash-can"></i></button>
@@ -65,6 +65,7 @@ shoppingListDiv.addEventListener('click', function (e) {
   const clicked = e.target.closest('.btn');
 
   console.log(clicked);
+
   // Guard clause
   if (!clicked) return;
 
@@ -82,8 +83,8 @@ shoppingListDiv.addEventListener('click', function (e) {
     }
   });
 
-  console.log('Shopping List Index:', indexShoppingList);
-  console.log('Ingredient List Index:', indexIngredientsList);
+  // console.log('Shopping List Index:', indexShoppingList);
+  // console.log('Ingredient List Index:', indexIngredientsList);
 
   ///// ADD TO SHOPPING LIST (Modal) -------------------
 
@@ -214,6 +215,69 @@ shoppingListDiv.addEventListener('click', function (e) {
 
       displayShoppingList();
     }, 1000);
+  }
+
+  // EDIT shopping list item
+  if (clicked.classList.contains(`btn-edit-shopping-list-item`)) {
+    // Create HTML for changing the selected unit
+    let itemUnitOptionsHTML = '';
+
+    //
+    itemUnitOptionsHTML += `
+    <option>${shoppingList[indexShoppingList].amountUnit}</option>
+    <option>--------</option>
+    `;
+
+    shoppingList[indexShoppingList].ingredient.units.forEach(function (unit) {
+      itemUnitOptionsHTML += `
+      <option>${unit}</option>
+      `;
+    });
+    console.log(itemUnitOptionsHTML);
+
+    console.log('Edit');
+    console.log(shoppingList[indexShoppingList]);
+    const editShoppingListItemHTML = `
+    <h2>Editera</h2>
+    <div class="edit-shopping-list-item-modal">
+      <form action="">
+      <div>
+      <input type="text" name="inpEditAmount" id="inpEditAmount" placeholder="Amount" value="${shoppingList[indexShoppingList].amount}"/>
+      <select
+      id="selectEditAmountUnit"
+      name="selectEditAmountUnit">
+      ${itemUnitOptionsHTML}
+      </select>
+      </div>
+
+      <input
+      type="submit"
+      value="Save Changes"
+      name=""
+      class="btn-save-changes"
+      />
+      </form>
+      </div>
+    `;
+
+    toggleModal(editShoppingListItemHTML);
+
+    const inpEditAmount = document.querySelector('#inpEditAmount');
+    inpEditAmount.value = shoppingList[indexShoppingList].amount;
+    const selectEditAmountUnit = document.querySelector(
+      '#selectEditAmountUnit'
+    );
+    selectEditAmountUnit.value = shoppingList[indexShoppingList].amountUnit;
+
+    const btnSaveChanges = document.querySelector('.btn-save-changes');
+    btnSaveChanges.addEventListener('click', function (event) {
+      event.preventDefault();
+      shoppingList[indexShoppingList].amount = inpEditAmount.value;
+      shoppingList[indexShoppingList].amountUnit = selectEditAmountUnit.value;
+
+      displayShoppingList();
+      toggleModal();
+    });
   }
 
   // DELETE ingredient from shopping list

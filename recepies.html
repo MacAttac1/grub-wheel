@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grub Wheel</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="recepies.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Recept</h1>
+      <button class="btn btn-add btn-add-ingredient">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+      <button class="btn-menu"><i class="fa-solid fa-bars"></i></button>
+    </header>
+
+    <div class="create-new-recepie hidden">
+      <form action="">
+        <input type="text" name="inpName" id="inpName" placeholder="Name" />
+        <input type="text" name="inpUnit" id="inpUnit" placeholder="Unit" />
+        <input
+          type="submit"
+          value="Create"
+          name="btnCreateNew"
+          id="btnCreateNew"
+        />
+      </form>
+    </div>
+
+    <div class="recepie-selectors">
+      <div class="recepie-selector">
+        <select name="recepieCategory" id="recepieCategory">
+          <!-- Insers recepie category options -->
+        </select>
+        <button id="btnClearRecepieCategory">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="recepie-selector">
+        <select name="recepieType" id="recepieType">
+          <!-- Insert recepie type options -->
+        </select>
+        <button id="btnClearRecepieType">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+    <div class="recepies">
+      <!-- insert ingredient list here -->
+    </div>
+
+    <div class="modal hidden">
+      <button class="btn-close-modal">&times;</button>
+      <div class="modal-content">
+        <p>Insert HTML here...</p>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <!-- JS Link -->
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/recepies.js"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/38b495a273.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

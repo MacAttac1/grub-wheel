@@ -36,16 +36,17 @@ main ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  margin-left: 20px;
 }
 
 main li {
-  list-style: none;
   font-size: 3rem;
 }
 
 main a {
   color: white;
+  text-decoration: none;
 }
 
 #modalMenu {

@@ -183,12 +183,51 @@ let shoppingList = [
     amountUnit: 'st',
   },
 ];
+
+let recepies = [
+  {
+    ID: '0000001',
+    name: 'Fiskgratäng med potatismos',
+    type: 'Lunch',
+    category: 'Fisk',
+  },
+  {
+    ID: '0000002',
+    name: 'Fläskpannkaka med lite annat gött och sånt till',
+    type: 'Lunch',
+    category: 'Fläsk',
+  },
+  {
+    ID: '0000003',
+    name: 'Tacos',
+    type: 'Kväll',
+    category: 'Nöt',
+  },
+  {
+    ID: '0000004',
+    name: 'Svampcanneloni',
+    type: 'Lunch',
+    category: 'Vegetarisk',
+  },
+];
+
 let filteredIngredientsByCategory = [];
 
 let ingredientCategories = [
   { name: 'fruitAndVeg', displayName: 'Frukt & Grönt' },
   { name: 'dairy', displayName: 'Mejeri' },
   { name: 'skafferi', displayName: 'Skafferi' },
+];
+
+const ingredientUnits = ['g', 'st', 'ml', 'dl', 'l', 'msk', 'tsk', 'krm'];
+const recepieTypes = ['Alla', 'Lunch', 'Kväll', 'Förrätt', 'Fikabröd'];
+const recepieCategories = [
+  'Alla',
+  'Fläsk',
+  'Nöt',
+  'Fisk',
+  'Kyckling',
+  'Vegetarisk',
 ];
 
 // CLASSES
@@ -223,6 +262,17 @@ class ShoppingListItem {
 
   constructor(ingredient) {
     this.ingredient = ingredient;
+  }
+}
+
+class RecepieIngredient {
+  amountInGrams = 0;
+  comment = '';
+
+  constructor(ingredient, amount, unit) {
+    this.ingredient = ingredient;
+    this.amount = amount;
+    this.unit = unit;
   }
 }
 

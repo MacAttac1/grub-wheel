@@ -5,6 +5,14 @@ const selectRecepieCategory = document.getElementById('recepieCategory');
 const recepiesDiv = document.querySelector('.recepies');
 const btnClearCategory = document.getElementById('btnClearRecepieCategory');
 const btnClearType = document.getElementById('btnClearRecepieType');
+const btnHideShowRecepieFilters = document.getElementById(
+  'hideShowRecepieFilters'
+);
+const inpRecepieFilter = document.getElementById('recepieFilter');
+const btnClearRecepieSearch = document.getElementById('btnClearRecepieFilter');
+const recepieSelectorsDiv = document.querySelector(
+  '.recepieTypeAndCategorySelectors'
+);
 
 let optionsRecepieTypeHTML = '';
 const optionsRecepieType = recepieTypes.forEach(
@@ -127,7 +135,7 @@ const generateRecepieInfoHTML = function (arrayIndex) {
   let html = '';
   console.log(recepies[arrayIndex].name);
   html += `
-    <h2>${recepies[arrayIndex].name}</h2>
+    <h2 class="recepieModalHeading">${recepies[arrayIndex].name}</h2>
     <h3 class="text-muted">${recepies[arrayIndex].portions} portioner</h3>
     <br>
     <h4>${recepies[arrayIndex].mainIngredientsHeading}</h4>
@@ -155,9 +163,10 @@ const generateRecepieIngredientsList = function (arr) {
     console.log(ing.ingredient.name);
     html += `
     <div class="recepie-ingredients">
-    <p>${ing.amount}</p>
-    <p>${ing.unit}</p>
-    <p>${ing.ingredient.name}</p>
+    <p class="amountAndUnit">${ing.amount} ${ing.unit}</p>
+    <p>${ing.ingredient.name}<span class="text-muted"> ${
+      ing.comment ? `(${ing.comment})` : ''
+    }</span></p>
     </div>
     `;
   });
@@ -177,3 +186,40 @@ const generateRecepieInstructionsList = function (arr) {
 
   return html;
 };
+
+btnHideShowRecepieFilters.addEventListener('click', function () {
+  if (recepieSelectorsDiv.classList.contains('hidden')) {
+    btnHideShowRecepieFilters.innerHTML =
+      '<i class="fa-solid fa-filter-circle-xmark"></i>';
+
+    recepieSelectorsDiv.classList.toggle('hidden');
+  } else {
+    recepieSelectorsDiv.classList.toggle('hidden');
+    btnHideShowRecepieFilters.innerHTML = '<i class="fa-solid fa-filter"></i>';
+  }
+});
+
+inpRecepieFilter.addEventListener('keyup', function (e) {
+  e.preventDefault();
+  console.log('keyup');
+  console.log(e.target.value.length);
+  let filteredRecepies = recepies.filter(function (el, i) {
+    if (
+      el.name.slice(0, e.target.value.length).toLocaleLowerCase() ===
+      e.target.value.toLocaleLowerCase()
+    )
+      return el;
+  });
+  if (e.target.value === '') {
+    console.log('tomt!');
+    displayRecepies(recepies);
+  } else {
+    console.log('else!');
+    displayRecepies(filteredRecepies);
+  }
+});
+
+btnClearRecepieSearch.addEventListener('click', function (e) {
+  inpRecepieFilter.value = '';
+  displayRecepies(recepies);
+});

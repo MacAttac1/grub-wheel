@@ -198,21 +198,21 @@ let recepies = [
         amount: 1,
         unit: 'st',
         amountInGrams: 100,
-        comment: 'Comment...',
+        comment: 'Skalad',
       },
       {
         ingredient: ingredients[1],
         amount: 2,
         unit: 'g',
         amountInGrams: 100,
-        comment: 'Comment...',
+        comment: 'Pressad',
       },
       {
         ingredient: ingredients[2],
         amount: 3,
         unit: 'dl',
         amountInGrams: 100,
-        comment: 'Comment...',
+        comment: '',
       },
     ],
     instructions: ['Sätt på ugnen', 'Tvätta händerna', 'Raka pungen'],
@@ -233,7 +233,7 @@ let recepies = [
         comment: 'Comment...',
       },
     ],
-    instructions: 'Instructions...',
+    instructions: ['Instructions...'],
   },
   {
     ID: '0000003',
@@ -251,7 +251,7 @@ let recepies = [
         comment: 'Comment...',
       },
     ],
-    instructions: 'Instructions...',
+    instructions: ['Instructions...'],
   },
   {
     ID: '0000004',
@@ -269,7 +269,7 @@ let recepies = [
         comment: 'Comment...',
       },
     ],
-    instructions: 'Instructions...',
+    instructions: ['Instructions...'],
   },
 ];
 

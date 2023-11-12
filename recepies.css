@@ -26,7 +26,7 @@
 
 .recepie-selector input {
   border: none;
-  width: 90%;
+  width: 85%;
   font-size: 1.5rem;
   text-align: center;
   padding-block: 5px;
@@ -34,6 +34,22 @@
   height: 50px;
   border-top-left-radius: 10rem;
   border-bottom-left-radius: 10rem;
+}
+
+.recepieTypeAndCategorySelectors {
+  display: flex;
+  gap: 10px;
+  width: 90%;
+  padding-top: 15px;
+}
+
+#hideShowRecepieFilters {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  padding-left: 15px;
+  min-width: 35px;
 }
 
 .recepies {
@@ -55,10 +71,22 @@
 
 /* MODAL */
 
+.recepieModalHeading {
+  width: 90%;
+}
+
 .recepie-ingredients {
   display: flex;
 }
 
+.amountAndUnit {
+  min-width: 50px;
+}
+
 .recepie-instructions li {
-  margin-left: 30px;
+  margin-left: 15px;
+}
+
+.hidden {
+  display: none;
 }

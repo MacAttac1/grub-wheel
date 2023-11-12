@@ -190,24 +190,86 @@ let recepies = [
     name: 'Fiskgratäng med potatismos',
     type: 'Lunch',
     category: 'Fisk',
+    portions: 4,
+    mainIngredientsHeading: 'Heading',
+    mainIngredients: [
+      {
+        ingredient: ingredients[0],
+        amount: 1,
+        unit: 'st',
+        amountInGrams: 100,
+        comment: 'Comment...',
+      },
+      {
+        ingredient: ingredients[1],
+        amount: 2,
+        unit: 'g',
+        amountInGrams: 100,
+        comment: 'Comment...',
+      },
+      {
+        ingredient: ingredients[2],
+        amount: 3,
+        unit: 'dl',
+        amountInGrams: 100,
+        comment: 'Comment...',
+      },
+    ],
+    instructions: ['Sätt på ugnen', 'Tvätta händerna', 'Raka pungen'],
   },
   {
     ID: '0000002',
     name: 'Fläskpannkaka med lite annat gött och sånt till',
     type: 'Lunch',
     category: 'Fläsk',
+    portions: 4,
+    mainIngredientsHeading: 'Heading',
+    mainIngredients: [
+      {
+        ingredient: '',
+        amount: 0,
+        unit: 'st',
+        amountInGrams: 100,
+        comment: 'Comment...',
+      },
+    ],
+    instructions: 'Instructions...',
   },
   {
     ID: '0000003',
     name: 'Tacos',
     type: 'Kväll',
     category: 'Nöt',
+    portions: 4,
+    mainIngredientsHeading: 'Heading',
+    mainIngredients: [
+      {
+        ingredient: '',
+        amount: 0,
+        unit: 'st',
+        amountInGrams: 100,
+        comment: 'Comment...',
+      },
+    ],
+    instructions: 'Instructions...',
   },
   {
     ID: '0000004',
     name: 'Svampcanneloni',
     type: 'Lunch',
     category: 'Vegetarisk',
+    portions: 4,
+    mainIngredientsHeading: 'Heading',
+    mainIngredients: [
+      {
+        ingredient: '',
+        amount: 0,
+        unit: 'st',
+        amountInGrams: 100,
+        comment: 'Comment...',
+      },
+    ],
+    instructions: 'Instructions...',
   },
 ];
 
@@ -292,6 +354,7 @@ btnMenu.addEventListener('click', function () {
   <ul id="modalMenu">
     <li><a href="index.html">Hem</a></li>
     <li><a href="shoppingList.html">Inköpslista</a></li>
+    <li><a href="recepies.html">Recept</a></li>
     <li><a href="ingredients.html">Ingredienser</a></li>
     <li><a href="nutrients.html">Näringsämnen</a></li>
   </ul>

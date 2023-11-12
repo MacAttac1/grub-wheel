@@ -101,3 +101,79 @@ btnClearType.addEventListener('click', function () {
     filterRecepies(selectRecepieType.value, selectRecepieCategory.value)
   );
 });
+
+recepiesDiv.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.btn');
+
+  console.log(clicked.classList);
+
+  // Guard clause
+  if (!clicked) return;
+
+  let indexRecepiesList;
+  recepies.forEach((rec, i) => {
+    if (rec.ID === clicked.value) {
+      indexRecepiesList = i;
+    }
+  });
+
+  if (clicked.classList.contains(`btn-info`)) {
+    toggleModal(generateRecepieInfoHTML(indexRecepiesList));
+    console.log(indexRecepiesList);
+  }
+});
+
+const generateRecepieInfoHTML = function (arrayIndex) {
+  let html = '';
+  console.log(recepies[arrayIndex].name);
+  html += `
+    <h2>${recepies[arrayIndex].name}</h2>
+    <h3 class="text-muted">${recepies[arrayIndex].portions} portioner</h3>
+    <br>
+    <h4>${recepies[arrayIndex].mainIngredientsHeading}</h4>
+    `;
+
+  html += generateRecepieIngredientsList(recepies[arrayIndex].mainIngredients);
+
+  html += `
+  <br>
+  <h4>Gör så här:</h4>
+  <div class="recepie-instructions">
+  `;
+
+  html += generateRecepieInstructionsList(recepies[arrayIndex].instructions);
+
+  html += '</div>';
+
+  return html;
+};
+
+const generateRecepieIngredientsList = function (arr) {
+  console.log(arr);
+  let html = '';
+  arr.forEach(function (ing) {
+    console.log(ing.ingredient.name);
+    html += `
+    <div class="recepie-ingredients">
+    <p>${ing.amount}</p>
+    <p>${ing.unit}</p>
+    <p>${ing.ingredient.name}</p>
+    </div>
+    `;
+  });
+
+  return html;
+};
+
+const generateRecepieInstructionsList = function (arr) {
+  console.log(arr);
+  let html = '<ol>';
+  arr.forEach(function (instr) {
+    html += `
+    <li>${instr}</li>
+    `;
+  });
+  html += '</ol>';
+
+  return html;
+};

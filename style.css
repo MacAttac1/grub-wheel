@@ -191,7 +191,7 @@ input {
   color: white;
 }
 
-.btn-info {
+[class^='btn btn-info'] {
   background-color: #222;
   color: white;
 }

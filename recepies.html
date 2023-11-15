@@ -11,37 +11,29 @@
   <body>
     <header>
       <h1>Recept</h1>
-      <button class="btn btn-add btn-add-ingredient">
-        <i class="fa-solid fa-circle-plus"></i>
-      </button>
-      <button class="btn-menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="header-buttons">
+        <button class="btn btn-add btn-add-recepie">
+          <i class="fa-solid fa-circle-plus"></i>
+        </button>
+        <button class="btn-menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
     </header>
-
-    <div class="create-new-recepie hidden">
-      <form action="">
-        <input type="text" name="inpName" id="inpName" placeholder="Name" />
-        <input type="text" name="inpUnit" id="inpUnit" placeholder="Unit" />
-        <input
-          type="submit"
-          value="Create"
-          name="btnCreateNew"
-          id="btnCreateNew"
-        />
-      </form>
-    </div>
 
     <div class="recepie-selectors">
       <div class="recepie-selector">
-        <input
-          type="text"
-          name="recepieFilter"
-          id="recepieFilter"
-          placeholder="Sök..."
-        />
-        <!-- Insert recepie type options -->
-        <button id="btnClearRecepieFilter">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <div class="recepie-search-input">
+          <input
+            type="text"
+            name="recepieFilter"
+            id="recepieFilter"
+            placeholder="Sök..."
+          />
+          <!-- Insert recepie type options -->
+          <button id="btnClearRecepieFilter">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
         <button id="hideShowRecepieFilters">
           <i class="fa-solid fa-filter"></i>
         </button>
@@ -80,6 +72,7 @@
     <div class="overlay hidden"></div>
 
     <!-- JS Link -->
+    <script src="index.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/recepies.js"></script>
 

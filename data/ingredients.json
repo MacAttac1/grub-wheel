@@ -1,0 +1,99 @@
+[
+  {
+    "name": "Paprika, grön",
+    "category": "fruitAndVeg",
+    "image": "./images/paprika-green.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Banan",
+    "category": "fruitAndVeg",
+    "image": "./images/banana.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Paprika, röd",
+    "category": "fruitAndVeg",
+    "image": "./images/paprika-red.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Mjölk",
+    "category": "dairy",
+    "image": "./images/milk.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Yoghurt",
+    "category": "dairy",
+    "image": "./images/youghurt.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Creme Fraiche",
+    "category": "dairy",
+    "image": "./images/cremefraiche.jpg",
+    "addedToListDates": [],
+    "units": ["st", "dl", "g"]
+  },
+  {
+    "name": "Bröd",
+    "category": "skafferi",
+    "image": "./images/bread.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Gurka",
+    "category": "fruitAndVeg",
+    "image": "./images/cucumber.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Morötter",
+    "category": "fruitAndVeg",
+    "image": "./images/carrot.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Clementin",
+    "category": "fruitAndVeg",
+    "image": "./images/clementine.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Äpple",
+    "category": "fruitAndVeg",
+    "image": "./images/apple.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Vitkål",
+    "category": "fruitAndVeg",
+    "image": "./images/vitkal.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Grape",
+    "category": "fruitAndVeg",
+    "image": "./images/grape.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Päron",
+    "category": "fruitAndVeg",
+    "image": "./images/pear.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Ananas",
+    "category": "fruitAndVeg",
+    "image": "./images/pineapple.jpg",
+    "addedToListDates": []
+  },
+  {
+    "name": "Gul lök",
+    "category": "fruitAndVeg",
+    "image": "./images/onion-yellow.jpg",
+    "addedToListDates": []
+  }
+]

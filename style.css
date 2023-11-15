@@ -15,6 +15,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-block: 15px;
   margin-inline: 20px;
 }

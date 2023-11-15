@@ -52,6 +52,7 @@ btnAddIngredient?.addEventListener('click', function () {
         inputNewIngredientCategory.value
       );
       ingredients.push(ingredient);
+      createIngredient(client, ingredient);
       toggleModal();
       displayIngredients();
     } else {

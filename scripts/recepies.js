@@ -5,6 +5,7 @@ const selectRecepieCategory = document.getElementById('recepieCategory');
 const recepiesDiv = document.querySelector('.recepies');
 const btnClearCategory = document.getElementById('btnClearRecepieCategory');
 const btnClearType = document.getElementById('btnClearRecepieType');
+const btnAddRecepie = document.querySelector('.btn-add-recepie');
 const btnHideShowRecepieFilters = document.getElementById(
   'hideShowRecepieFilters'
 );
@@ -222,4 +223,10 @@ inpRecepieFilter.addEventListener('keyup', function (e) {
 btnClearRecepieSearch.addEventListener('click', function (e) {
   inpRecepieFilter.value = '';
   displayRecepies(recepies);
+});
+
+// ADD NEW RECEPIE
+
+btnAddRecepie.addEventListener('click', function () {
+  toggleModal('');
 });
